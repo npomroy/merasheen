@@ -16,6 +16,9 @@
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
  
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ 
  .home-callout, .navbar {
      
     //Gradient provided by @_ighosh at uigradients.com
@@ -34,4 +37,18 @@
  
 h1, h2, h3 {
     font-family: 'Oswald', sans-serif;
+}
+
+//Nav styles
+.navbar {
+    border: none;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    &:hover {
+        color: white;
+        opacity: 0.75;
+    }
 }
