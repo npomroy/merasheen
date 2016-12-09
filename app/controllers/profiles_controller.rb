@@ -19,6 +19,11 @@ class ProfilesController < ApplicationController
       end
    end
    
+   # PUT to /users/:user_id/profile/edit
+   def edit
+      @profile = current_user.profile 
+   end
+   
    private
     def profile_params
         params.require(:profile).permit(:first_name, :last_name, :job_title, :phone_number, :contact_email, :avatar, :description, :boat_id)
