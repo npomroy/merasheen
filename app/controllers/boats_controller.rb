@@ -26,6 +26,18 @@ class BoatsController < ApplicationController
        @boat = Boat.find(params[:id]) 
     end
     
+    # PUT /boats/:id
+    def update
+        @boat = Boat.find(params[:id])
+        if @boat.update_attributes( boat_params )
+           flash[:success] = "Boat Updated"
+           redirect_to boat_path(id: params[:id])
+        else
+            flash[:error] = "Update failed"
+            render :edit
+        end
+    end
+    
     # GET /boats
     def index
        @boats = Boat.all 
