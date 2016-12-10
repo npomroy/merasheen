@@ -1,1 +1,46 @@
-<h1>New Trip</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="well">
+                <h1 class='text-center'>New Trip</h1>
+                <%= form_for "@trip" do |f| %>
+                    <div class='field form-group'>
+                        <%= f.label :name %>
+                        <%= f.text_field :name, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.label :depart_from %>
+                        <%= f.text_field :depart_from, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.label :depart_date %>
+                        <%= f.date_field :depart_date, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.label :depart_time %>
+                        <%= f.time_field :depart_time, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.label :boat %>
+                        <%= f.text_field :boat, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.label :skipper %>
+                        <%= f.text_field :skipper, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.label :available_seats %>
+                        <%= f.number_field :available_seats, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.label :starting_price %>
+                        <%= f.number_field :starting_price, class: 'form-control' %>
+                    </div>
+                    <div class='field form-group'>
+                        <%= f.submit "Create trip", class: 'btn btn-primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
