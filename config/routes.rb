@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resource :profile
   end
   resources :boats
+  resources :trips
 end
