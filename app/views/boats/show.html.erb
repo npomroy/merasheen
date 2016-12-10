@@ -3,6 +3,7 @@
         <div class='col-md-8 col-md-offset-2'>
             <div class='well'>
                 <h1><%= @boat.name %></h1>
+                <%= image_tag @boat.avatar.url %>
                 <h4><%= "Owned by: " << @boat.owner %></h4>
                 <h4><%= "Out of: " << @boat.home_port %></h4>
                 <h4><%= "$" << @boat.price.to_s << "0+" %></h4>
