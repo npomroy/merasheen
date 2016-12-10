@@ -15,6 +15,11 @@ class TripsController < ApplicationController
        end
     end
     
+    # GET /trips
+    def index
+       @trips = Trip.all 
+    end
+    
     private
         def trip_params
            params.require(:trip).permit(:name, :depart_from, :depart_date_time, :boat_id, :skipper, :available_seats, :starting_price, :comments) 
