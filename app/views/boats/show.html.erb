@@ -3,7 +3,13 @@
         <div class='col-md-8 col-md-offset-2'>
             <div class='well'>
                 <h1><%= @boat.name %></h1>
+                <h4><%= "Owned by: " << @boat.owner %></h4>
+                <h4><%= "Out of: " << @boat.home_port %></h4>
+                <h4><%= "$" << @boat.price.to_s << "0+" %></h4>
+                <h6><%= "Top speed: " << @boat.speed.to_s << " knots" %></h6>
+                <h6><%= "Capacity: " << @boat.capacity.to_s %></h6>
             </div>
+            <%= link_to "New trip", "/#", class: 'btn btn-default' %>
         </div>
     </div>
 </div>
