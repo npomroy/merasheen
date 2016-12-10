@@ -13,16 +13,14 @@
                         <%= f.text_field :depart_from, class: 'form-control' %>
                     </div>
                     <div class='field form-group'>
-                        <%= f.label :depart_date %>
-                        <%= f.date_field :depart_date, class: 'form-control' %>
-                    </div>
-                    <div class='field form-group'>
-                        <%= f.label :depart_time %>
-                        <%= f.time_field :depart_time, class: 'form-control' %>
+                        <%= f.label :depart_date_time %>
+                        <%= f.datetime_field :depart_date_time, class: 'form-control' %>
                     </div>
                     <div class='field form-group'>
                         <%= f.label :boat %>
-                        <%= f.text_field :boat, class: 'form-control' %>
+                        <%= f.select(:boat_id) do %>
+                            <%= options_from_collection_for_select(Boat.all, :id, :name) %>
+                        <% end %>
                     </div>
                     <div class='field form-group'>
                         <%= f.label :skipper %>
