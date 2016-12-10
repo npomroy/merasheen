@@ -2,8 +2,24 @@
     <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
             <% @boats.each do |boat| %>
-                <div class='well'>
-                    <h2><%= boat.name %></h2>
+                <div class='well row'>
+                    <div class='col-sm-4'>
+                        <h2><%= boat.name %></h2>
+                    </div>
+                    <div class='col-sm-4'>
+                        <h4><%= "Owned by: " << boat.owner %></h4>
+                        <h4><%= "Out of: " << boat.home_port %></h4>
+                    </div>
+                    <div class='col-sm-3'>
+                        <h4><%= "$" << boat.price.to_s << "0+" %></h4>
+                        <h6><%= "Top speed: " << boat.speed.to_s << " knots" %></h6>
+                        <h6><%= "Capacity: " << boat.capacity.to_s %></h6>
+                    </div>
+                    <div class='col-sm-1'>
+                        <%= link_to "/#" do %>
+                            <i class='fa fa-trash btn btn-default'></i>
+                        <% end %>
+                    </div>
                 </div>
             <% end %>
         </div>
