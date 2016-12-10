@@ -10,6 +10,7 @@
                 <h6><%= "Top speed: " << @boat.speed.to_s << " knots" %></h6>
                 <h6><%= "Capacity: " << @boat.capacity.to_s %></h6>
             </div>
+            <%= link_to "Edit boat", edit_boat_path(id: params[:id]), class: 'btn btn-primary' %>
             <%= link_to "New trip", "/#", class: 'btn btn-default' %>
         </div>
     </div>
