@@ -4,7 +4,9 @@
             <% @boats.each do |boat| %>
                 <div class='well row'>
                     <div class='col-sm-4'>
-                        <h2><%= boat.name %></h2>
+                        <%= link_to boat_path(id: boat.id) do %>
+                            <h2><%= boat.name %></h2>
+                        <% end %>
                     </div>
                     <div class='col-sm-4'>
                         <h4><%= "Owned by: " << boat.owner %></h4>

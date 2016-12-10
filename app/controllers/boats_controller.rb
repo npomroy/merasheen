@@ -4,6 +4,11 @@ class BoatsController < ApplicationController
         @boat = Boat.new
     end
     
+    # GET /boats/:id
+    def show
+       @boat = Boat.find(params[:id]) 
+    end
+    
     # POST /boats
     def create
         @boat = Boat.new( boat_params )
