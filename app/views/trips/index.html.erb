@@ -4,7 +4,9 @@
             <% @trips.each do |trip| %>
                 <div class="well row">
                     <div class='col-sm-4'>
-                        <h2><%= trip.name %></h2>
+                        <%= link_to trip_path(id: trip.id) do %>
+                            <h2><%= trip.name %></h2>
+                        <% end %>
                     </div>
                     <div class='col-sm-4'>
                         <h4><%= "Out of: " << trip.depart_from %></h4>

@@ -1,6 +1,12 @@
 class TripsController < ApplicationController
+    # GET /trips/new
     def new
        @trip = Trip.new
+    end
+    
+    # GET /trips/:id
+    def show
+       @trip = Trip.find(params[:id]) 
     end
     
     # POST /trips
