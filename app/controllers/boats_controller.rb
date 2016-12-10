@@ -21,6 +21,11 @@ class BoatsController < ApplicationController
         end
     end
     
+    # GET /boats/:id/edit
+    def edit
+       @boat = Boat.find(params[:id]) 
+    end
+    
     # GET /boats
     def index
        @boats = Boat.all 

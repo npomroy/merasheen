@@ -1,0 +1,37 @@
+<%= form_for @boat, :html => { :multipart => true } do |f| %>
+    <div class='field form-group'>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.label :owner %>
+        <%= f.text_field :owner, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.label :home_port %>
+        <%= f.text_field :home_port, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.label :capacity %>
+        <%= f.text_field :capacity, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.label :price %>
+        <%= f.text_field :price, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.label :speed %>
+        <%= f.text_field :speed, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.label :comments %>
+        <%= f.text_area :comments, class: 'form-control' %>
+    </div>
+    <div class='field form-group'>
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    </div>
+<% end %>
