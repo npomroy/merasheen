@@ -1,0 +1,11 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+            <% @boats.each do |boat| %>
+                <div class='well'>
+                    <h2><%= boat.name %></h2>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

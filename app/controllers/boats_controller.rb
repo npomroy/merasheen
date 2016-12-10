@@ -16,6 +16,11 @@ class BoatsController < ApplicationController
         end
     end
     
+    # GET /boats
+    def index
+       @boats = Boat.all 
+    end
+    
     private
         def boat_params
            params.require(:boat).permit(:name, :owner, :home_port, :capacity, :price, :speed, :comments) 
