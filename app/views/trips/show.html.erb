@@ -11,6 +11,7 @@
                 <h5><%= @trip.available_seats.to_s << " seats available" %></h5>
                 <p><%= "Comments: " << @trip.comments %></p>
             </div>
+            <%= link_to "Edit Trip", edit_trip_path(id: params[:id]), class: 'btn btn-primary' %>
         </div>
     </div>
 </div>
