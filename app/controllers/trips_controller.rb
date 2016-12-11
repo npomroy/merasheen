@@ -21,6 +21,11 @@ class TripsController < ApplicationController
        end
     end
     
+    # GET /trips/:id/edit
+    def edit
+       @trip = Trip.find(params[:id]) 
+    end
+    
     # GET /trips
     def index
        @trips = Trip.all 
