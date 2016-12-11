@@ -26,6 +26,18 @@ class TripsController < ApplicationController
        @trip = Trip.find(params[:id]) 
     end
     
+    # PUT /trips/:id
+    def update
+       @trip = Trip.find(params[:id])
+       if @trip.update_attributes( trip_params )
+           flash[:success] = "Trip updated"
+           redirect_to trip_path(id: params[:id])
+       else
+           flash[:error] = "Update failed"
+           render :edit
+       end
+    end
+    
     # GET /trips
     def index
        @trips = Trip.all 
