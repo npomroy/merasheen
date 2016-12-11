@@ -3,6 +3,13 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="well">
                 <h1><%= @trip.name %></h1>
+                <h4><%= "Out of: " << @trip.depart_from %></h4>
+                <h4><%= "on: " << @trip.depart_date_time.to_s %></h4>
+                <h3><%= "$" << @trip.starting_price.to_s << "0+" %></h3>
+                <h4><%= "Boat: " << @trip.boat_id.to_s %></h4>
+                <h4><%= "Skipper: " << @trip.skipper %></h4>
+                <h5><%= @trip.available_seats.to_s << " seats available" %></h5>
+                <p><%= "Comments: " << @trip.comments %></p>
             </div>
         </div>
     </div>
