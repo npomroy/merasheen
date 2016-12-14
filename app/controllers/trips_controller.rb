@@ -6,7 +6,8 @@ class TripsController < ApplicationController
     
     # GET /trips/:id
     def show
-       @trip = Trip.find(params[:id]) 
+       @trip = Trip.find(params[:id])
+       @boat = Boat.find(@trip.boat_id)
     end
     
     # POST /trips
@@ -41,6 +42,7 @@ class TripsController < ApplicationController
     # GET /trips
     def index
        @trips = Trip.all 
+       @boats = Boat.select("id, name").to_a()
     end
     
     private

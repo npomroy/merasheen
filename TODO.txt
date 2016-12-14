@@ -1,1 +1,7 @@
 * Secure Boats, Trips
+
+added has_one association for boats on trips
+commented trip index boat links
+boat links need to show proper boat names
+
+properly associate trips with a boat

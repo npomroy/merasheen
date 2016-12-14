@@ -14,7 +14,11 @@
                         <h3><%= "$" << trip.starting_price.to_s << "0+" %></h3>
                     </div>
                     <div class='col-sm-4'>
-                        <h4><%= "Boat: " << trip.boat_id.to_s %></h4>
+                        <% @boats.each do |boat| %>
+                            <% if boat.id == trip.boat_id %>
+                                <h4>Boat: <%= boat.name %></h4>
+                            <% end %>
+                        <% end %>
                         <h4><%= "Skipper: " << trip.skipper %></h4>
                         <h5><%= trip.available_seats.to_s << " seats available" %></h5>
                         <p><%= "Comments: " << trip.comments %></p>
