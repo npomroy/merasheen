@@ -20,6 +20,17 @@ class LogsController < ApplicationController
       @log = Log.find(params[:id]) 
    end
    
+   def update
+      @log = Log.find(params[:id])
+      if @log.update_attributes(log_params)
+          flash[:success] = "Log updated"
+          redirect_to logs_path
+      else
+          flash[:error] = "Log update failed"
+          render action: :show
+      end
+   end
+   
    def destroy
       Log.find([:id]).destroy
       redirect_to logs_path
