@@ -1,19 +1,19 @@
-<div class="row well">
+<div class="row aamenu">
     <div class="col-md-2">
-        <%= link_to "New Trip", new_trip_path, class: "btn btn-default btn-lg btn-block" %>
+        <%= link_to "New Trip", new_trip_path, class: "btn btn-lg btn-block" %>
     </div>
     <div class="col-md-2">
-        <%= link_to "Trips", trips_path, class: "btn btn-default btn-lg btn-block" %>
+        <%= link_to "Trips", trips_path, class: "btn btn-lg btn-block" %>
     </div>
     <div class="col-md-4">
-        <%= link_to all_aboard_path, class: "text-center" do %>
-            <h1>All Aboard</h1>
+        <%= link_to all_aboard_path do %>
+            <h1 class="text-center">All Aboard</h1>
         <% end %>
     </div>
     <div class="col-md-2">
-        <%= link_to "Looking for Rides", passengers_path, class: "btn btn-default btn-lg btn-block" %>
+        <%= link_to "Looking for Rides", passengers_path, class: "btn btn-lg btn-block" %>
     </div>
     <div class="col-md-2">
-        <%= link_to "New Looking for ride", new_passenger_path, class: "btn btn-default btn-lg btn-block" %>
+        <%= link_to "New Looking for ride", new_passenger_path, class: "btn btn-lg btn-block" %>
     </div>
 </div>
