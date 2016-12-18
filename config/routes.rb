@@ -5,6 +5,5 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
   end
-  resources :boats
-  resources :trips
+  resources :boats, :trips, :passengers
 end
