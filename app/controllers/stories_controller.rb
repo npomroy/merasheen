@@ -19,6 +19,17 @@ class StoriesController < ApplicationController
       @story = Storie.find(params[:id]) 
    end
    
+   def update
+      @story = Storie.find(params[:id])
+      if @story.update_attributes(story_params)
+          flash[:success] = "Story updated"
+          redirect_to storie_path(id: params[:id])
+      else
+          flash[:error] = "Story update failed"
+          render action: :show
+      end
+   end
+   
    def destroy
       Storie.find(params[:id]).destroy
       redirect_to stories_path
