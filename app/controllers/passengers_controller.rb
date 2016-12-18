@@ -15,6 +15,10 @@ class PassengersController < ApplicationController
       end
    end
    
+   def show
+      @passsenger = Passenger.find(params[:id]) 
+   end
+   
    def destroy
       Passenger.find(params[:id]).destroy
       redirect_to passengers_path
