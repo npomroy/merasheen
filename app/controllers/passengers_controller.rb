@@ -19,6 +19,17 @@ class PassengersController < ApplicationController
       @passsenger = Passenger.find(params[:id]) 
    end
    
+   def update
+      @passenger = Passenger.find(params[:id])
+      if @passenger.update_attributes(passenger_params)
+          flash[:success] = "Lookin for Ride updated"
+          redirect_to passengers_path
+      else
+          flash[:error] = "Update failed"
+          render action: :show
+      end
+   end
+   
    def destroy
       Passenger.find(params[:id]).destroy
       redirect_to passengers_path
