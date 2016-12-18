@@ -3,7 +3,9 @@
         <div class="col-md-10 col-md-offset-1">
             <% @stories.each do |story| %>
                 <div class="well row">
-                    <h2><%= story.title %></h2>
+                    <%= link_to story_path(id: story.id) do %>
+                        <h2><%= story.title %></h2>
+                    <% end %>
                 </div>
             <% end %>
         </div>
