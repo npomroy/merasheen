@@ -15,6 +15,10 @@ class PassengersController < ApplicationController
       end
    end
    
+   def index
+      @passengers = Passenger.all 
+   end
+   
    private
         def passenger_params
            params.require(:passenger).permit(:title, :earliestdate, :latestdate, :details, :user_id) 
