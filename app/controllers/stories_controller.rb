@@ -15,6 +15,11 @@ class StoriesController < ApplicationController
       end
    end
    
+   def destroy
+      Storie.find(params[:id]).destroy
+      redirect_to stories_path
+   end
+   
    def index
       @stories = Storie.all 
    end
