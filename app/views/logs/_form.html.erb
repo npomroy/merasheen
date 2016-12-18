@@ -1,0 +1,25 @@
+<%= form_for @log, :html => { :multipart => true } do |f| %>
+    <div class="field form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :link %>
+        <%= f.text_field :link, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :startdate %>
+        <%= f.datetime_field :startdate, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :enddate %>
+        <%= f.datetime_field :enddate, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :details %>
+        <%= f.text_area :details, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.submit :submit, class: "btn btn-primary" %>
+    </div>
+<% end %>
