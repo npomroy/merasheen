@@ -8,11 +8,16 @@ class PassengersController < ApplicationController
       @passenger.user_id = current_user.id
       if @passenger.save
           flash[:success] = "Passenger created"
-          redirect_to root_path
+          redirect_to passengers_path
       else
           flash[:error] = "Passenger creation failed"
           render action: :new
       end
+   end
+   
+   def destroy
+      Passenger.find(params[:id]).destroy
+      redirect_to passengers_path
    end
    
    def index
