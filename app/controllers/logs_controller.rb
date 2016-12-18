@@ -16,6 +16,10 @@ class LogsController < ApplicationController
       end
    end
    
+   def show
+      @log = Log.find(params[:id]) 
+   end
+   
    def destroy
       Log.find([:id]).destroy
       redirect_to logs_path
