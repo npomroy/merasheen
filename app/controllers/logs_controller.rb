@@ -9,11 +9,16 @@ class LogsController < ApplicationController
       @log.likes = 0
       if @log.save
           flash[:success] = "Log added"
-          redirect_to root_path
+          redirect_to logs_path
       else
           flash[:error] = 'Log creation failed'
           render action: :new
       end
+   end
+   
+   def destroy
+      Log.find([:id]).destroy
+      redirect_to logs_path
    end
    
    def index
