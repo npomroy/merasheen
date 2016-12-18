@@ -4,7 +4,9 @@
         <div class="col-md-8 col-md-offset-2">
             <% @passengers.each do |passenger| %>
                 <div class="well row">
-                    <%= passenger.title %>
+                    <%= link_to passenger_path(id: passenger.id) do %>
+                        <%= passenger.title %>
+                    <% end %>
                 </div>
             <% end %>
         </div>
