@@ -4,7 +4,9 @@
             <% @logs.each do |mlog| %>
                 <div class="well row">
                     <div class="col-sm-3">
-                        <h3><%= mlog.title %></h3>
+                        <%= link_to log_path(id: mlog.id) do %>
+                            <h3><%= mlog.title %></h3>
+                        <% end %>
                     </div>
                     <div class="col-sm-1">
                         <i class="fa fa-thumbs-up"></i><%= mlog.likes %>
