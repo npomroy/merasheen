@@ -15,6 +15,10 @@ class StoriesController < ApplicationController
       end
    end
    
+   def show
+      @story = Storie.find(params[:id]) 
+   end
+   
    def destroy
       Storie.find(params[:id]).destroy
       redirect_to stories_path
