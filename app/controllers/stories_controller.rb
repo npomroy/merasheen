@@ -8,11 +8,15 @@ class StoriesController < ApplicationController
       @story.user_id = current_user.id
       if @story.save
           flash[:success] = "Story created"
-          redirect_to root_path
+          redirect_to stories_path
       else
           flash[:error] = "Story creation failed"
           redner action: :new
       end
+   end
+   
+   def index
+      @stories = Storie.all 
    end
    
    private
