@@ -2,10 +2,47 @@
     <h2>Merasheen Home Page</h2>
     <h4>Welcome home</h4>
 </div>
-<% if user_signed_in? %>
-    <% if current_user.profile %>
-        <%= link_to "Update profile", edit_user_profile_path(user_id: current_user.id) %>
-    <% else %>
-        <%= link_to "Create profile", new_user_profile_path(user_id: current_user.id) %>
-    <% end %>
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="well">
+            <%= link_to all_aboard_path do %>
+                <h1 class="text-center">All Aboard</h1>
+            <% end %>
+            <h3>Find a ride to the island</h3>
+            <h3>Or help others get to the island</h3>
+            <h4>You can even earn money for your effort if you choose</h4>
+            <p>All aboard is a system to link together boat operators with people 
+            looking to get to Merasheen Island. The operators may charge money if
+            they like however you will have to make you own payment arrangements</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well">
+            <%= link_to logs_path do %>
+                <h1 class="text-center">Log Book</h1>
+            <% end %>
+            <h3>Tell us about your trip to the island</h3>
+            <p>Leave a log of your trip and see logs left by others. Keep up to date 
+            on what is happening on the island</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well">
+            <%= link_to logs_path do %>
+                <h1 class="text-center">Stories</h1>
+            <% end %>
+            <h3>Read stories from others on the island</h3>
+            <h3>Tell us your stories from the island</h3>
+            <p>Stories from the island</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<% if user_signed_in? %>-->
+<!--    <% if current_user.profile %>-->
+<!--        <%= link_to "Update profile", edit_user_profile_path(user_id: current_user.id) %>-->
+<!--    <% else %>-->
+<!--        <%= link_to "Create profile", new_user_profile_path(user_id: current_user.id) %>-->
+<!--    <% end %>-->
+<!--<% end %>-->
