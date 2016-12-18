@@ -20,7 +20,7 @@ class PassengersController < ApplicationController
    end
    
    def show
-      @passsenger = Passenger.find(params[:id]) 
+      @passenger = Passenger.find(params[:id]) 
    end
    
    def update

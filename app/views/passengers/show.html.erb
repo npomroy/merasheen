@@ -6,8 +6,8 @@
                 <h2 class="text-center">Looking for Ride</h2>
                 <h3><%= @passenger.title %></h3>
                 <p><%= @passenger.details %></p>
-                <h5><%= @passenger.earliestdate.to_s %></h5>
-                <h5><%= @passenger.latestdate.to_s %></h5>
+                <h5>Earliest leave time: <%= @passenger.earliestdate.to_formatted_s(:long_ordinal) %></h5>
+                <h5>Latest leave time: <%= @passenger.latestdate.to_formatted_s(:long_ordinal) %></h5>
             </div>
         </div>
     </div>
