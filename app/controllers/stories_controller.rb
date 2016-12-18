@@ -3,6 +3,10 @@ class StoriesController < ApplicationController
       @story = Storie.new 
    end
    
+   def edit
+      @story = Storie.find(params[:id]) 
+   end
+   
    def create
       @story = Storie.new(story_params)
       @story.user_id = current_user.id
