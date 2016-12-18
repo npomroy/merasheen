@@ -3,6 +3,10 @@ class LogsController < ApplicationController
        @log = Log.new
    end
    
+   def edit
+      @log = Log.find(params[:id]) 
+   end
+   
    def create
       @log = Log.new( log_params )
       @log.user_id = current_user.id
