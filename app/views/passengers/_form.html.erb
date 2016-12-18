@@ -1,4 +1,4 @@
-<%= form_for @passenger, do |f| %>
+<%= form_for @passenger, :html => { :multipart => true }  do |f| %>
     <div class="field form-group">
         <%= f.label :title %>
         <%= f.text_field :title, class: "form-control" %>
