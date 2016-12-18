@@ -3,6 +3,10 @@ class PassengersController < ApplicationController
       @passenger = Passenger.new 
    end
    
+   def edit
+      @passenger = Passenger.find(params[:id]) 
+   end
+   
    def create
       @passenger = Passenger.new(passenger_params)
       @passenger.user_id = current_user.id
