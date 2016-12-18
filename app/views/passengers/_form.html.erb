@@ -1,0 +1,21 @@
+<%= form_for @passenger, do |f| %>
+    <div class="field form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :earliestdate %>
+        <%= f.datetime_field :earliestdate, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :latestdate %>
+        <%= f.datetime_field :latestdate, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :details %>
+        <%= f.text_area :details, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+        <%= f.submit :submit, class: "btn btn-primary" %>
+    </div>
+<% end %>
