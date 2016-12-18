@@ -16,6 +16,10 @@ class LogsController < ApplicationController
       end
    end
    
+   def index
+      @logs = Log.all 
+   end
+   
    private
         def log_params
             params.require(:log).permit(:title, :user_id, :link, :details, :startdate, :enddate, :likes)

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <% @logs.each do |mlog| %>
+                <div class="well row">
+                    <div class="col-sm-3">
+                        <h3><%= mlog.title %></h3>
+                    </div>
+                    <div class="col-sm-1">
+                        <i class="fa fa-thumbs-up"></i><%= mlog.likes %>
+                    </div>
+                    <div class="col-sm-8">
+                        <p><%= mlog.details %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
