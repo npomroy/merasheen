@@ -15,6 +15,10 @@ class TripApplicationsController < ApplicationController
       end
    end
    
+   def show
+      @application = TripApplication.find(params[:id]) 
+   end
+   
    def destroy
       TripApplication.find(params[:id]).destroy
       redirect_to trip_trip_applications_path
