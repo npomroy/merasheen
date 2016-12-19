@@ -1,15 +1,15 @@
 <%= form_for @passenger, :html => { :multipart => true }  do |f| %>
     <div class="field form-group">
         <%= f.label :title %>
-        <%= f.text_field :title, value: "test", class: "form-control" %>
+        <%= f.text_field :title, class: "form-control" %>
     </div>
     <div class="field form-group">
         <%= f.label "Earliest date:" %>
-        <%= select_datetime Date.today, prefix: :start_date %>
+        <%= select_datetime DateTime.now, prefix: :start_date %>
     </div>
     <div class="field form-group">
         <%= f.label "Latest Date:" %>
-        <%= select_datetime Date.today, prefix: :latest_date %>
+        <%= select_datetime DateTime.tomorrow, prefix: :latest_date %>
     </div>
     <div class="field form-group">
         <%= f.label :details %>
