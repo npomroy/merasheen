@@ -1,14 +1,14 @@
 <%= form_for @passenger, :html => { :multipart => true }  do |f| %>
     <div class="field form-group">
         <%= f.label :title %>
-        <%= f.text_field :title, class: "form-control" %>
+        <%= f.text_field :title, value: "test", class: "form-control" %>
     </div>
     <div class="field form-group">
-        <%= f.label :earliestdate %>
-        <%= f.datetime_field :earliestdate, class: "form-control" %>
+        <%= f.label "Earliest date:" %>
+        <%= select_datetime Date.today, prefix: :start_date %>
     </div>
     <div class="field form-group">
-        <%= f.label :latestdate %>
+        <%= f.label "Latest Date:" %>
         <%= f.datetime_field :latestdate, class: "form-control" %>
     </div>
     <div class="field form-group">

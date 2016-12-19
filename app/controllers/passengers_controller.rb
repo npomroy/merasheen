@@ -10,6 +10,10 @@ class PassengersController < ApplicationController
    def create
       @passenger = Passenger.new(passenger_params)
       @passenger.user_id = current_user.id
+      @passenger.earliestdate = DateTime.civil(params[:start_date][:year].to_i, 
+                        params[:start_date][:month].to_i, params[:start_date][:day].to_i,
+                        params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,
+                        params[:start_date][:seconds].to_i)
       if @passenger.save
           flash[:success] = "Passenger created"
           redirect_to passengers_path
