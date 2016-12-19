@@ -5,6 +5,7 @@ class TripApplicationsController < ApplicationController
    
    def create
       @application = TripApplication.new( application_params )
+      @application.trip_id = params[:trip_id]
       if @application.save
           flash[:success] = "Application submitted"
           redirect_to trips_path
@@ -12,6 +13,10 @@ class TripApplicationsController < ApplicationController
           flash[:error] = "Application failed"
           render action: :new
       end
+   end
+   
+   def index
+      @applications = TripApplication.where("trip_id = ?", params[:trip_id])
    end
    
    private

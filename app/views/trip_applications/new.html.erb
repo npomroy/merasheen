@@ -13,6 +13,10 @@
                         <%= f.number_field :max_price_per_seat, class: "form-control" %>
                     </div>
                     <div class="field form-group">
+                        <%= f.label :details %>
+                        <%= f.text_area :details, class: "form-control" %>
+                    </div>
+                    <div class="field form-group">
                         <%= f.submit :Submit, class: "btn btn-primary" %>
                     </div>
                 <% end %>
