@@ -13,6 +13,10 @@ class TripsController < ApplicationController
     # POST /trips
     def create
        @trip = Trip.new( trip_params )
+       @trip.depart_date_time = DateTime.civil(params[:depart_date_time][:year].to_i, 
+                        params[:depart_date_time][:month].to_i, params[:depart_date_time][:day].to_i,
+                        params[:depart_date_time][:hour].to_i, params[:depart_date_time][:minute].to_i,
+                        params[:depart_date_time][:seconds].to_i)
        if @trip.save
            flash[:success] = "Trip created"
            redirect_to new_trip_path

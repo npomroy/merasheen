@@ -9,7 +9,7 @@
     </div>
     <div class='field form-group'>
         <%= f.label :depart_date_time %>
-        <%= f.datetime_field :depart_date_time, class: 'form-control' %>
+        <%= select_datetime DateTime.tomorrow, prefix: :depart_date_time %>
     </div>
     <div class='field form-group'>
         <%= f.label :boat %>
