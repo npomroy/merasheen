@@ -42,6 +42,7 @@ class LogsController < ApplicationController
    
    def index
       @logs = Log.all 
+      @users = Profile.all
    end
    
    private

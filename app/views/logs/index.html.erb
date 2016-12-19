@@ -7,6 +7,7 @@
                         <%= link_to log_path(id: mlog.id) do %>
                             <h3><%= mlog.title %></h3>
                         <% end %>
+                        <%= @users.find(mlog.user_id).first_name %>
                     </div>
                     <div class="col-sm-1">
                         <i class="fa fa-thumbs-up"></i><%= mlog.likes %>
