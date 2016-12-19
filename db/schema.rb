@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219141543) do
+ActiveRecord::Schema.define(version: 20161219154750) do
 
   create_table "boats", force: :cascade do |t|
     t.string   "name"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20161219141543) do
   create_table "logs", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.string   "link"
     t.text     "details"
     t.datetime "startdate"
     t.datetime "enddate"

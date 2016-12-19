@@ -19,10 +19,10 @@ class TripsController < ApplicationController
                         params[:depart_date_time][:seconds].to_i)
        if @trip.save
            flash[:success] = "Trip created"
-           redirect_to new_trip_path
+           redirect_to trips_path
        else
            flash[:error] = "Trip Creation Failed"
-           redirect_to new_trip_path
+           render action: :new
        end
     end
     

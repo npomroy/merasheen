@@ -4,10 +4,6 @@
         <%= f.text_field :title, class: "form-control" %>
     </div>
     <div class="field form-group">
-        <%= f.label :link %>
-        <%= f.text_field :link, class: "form-control" %>
-    </div>
-    <div class="field form-group">
         <%= f.label :startdate %>
         <%= select_datetime DateTime.now, prefix: :startdate %>
     </div>
