@@ -3,6 +3,19 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="well">
                 <h2 class="text-center">New Application</h2>
+                <%= form_for trip_trip_applications_path do |f| %>
+                    <div class="field form-group">
+                        <%= f.label :seat_total %>
+                        <%= f.number_field :seat_total, class: "form-control" %>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.label :max_price_per_seat %>
+                        <%= f.number_field :max_price_per_seat, class: "form-control" %>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.submit :Submit, class: "btn btn-primary" %>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>
