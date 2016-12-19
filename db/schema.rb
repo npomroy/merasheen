@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219154750) do
+ActiveRecord::Schema.define(version: 20161219163340) do
 
   create_table "boats", force: :cascade do |t|
     t.string   "name"
@@ -83,6 +83,13 @@ ActiveRecord::Schema.define(version: 20161219154750) do
     t.integer  "likes"
   end
 
+  create_table "trip_applications", force: :cascade do |t|
+    t.integer "trip_id"
+    t.integer "seat_total"
+    t.integer "max_price_per_seat"
+    t.text    "details"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string   "name"
     t.string   "depart_from"
@@ -94,6 +101,13 @@ ActiveRecord::Schema.define(version: 20161219154750) do
     t.text     "comments"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "trips_profiles", id: false, force: :cascade do |t|
+    t.integer "trip_id"
+    t.integer "profile_id"
+    t.index ["profile_id"], name: "index_trips_profiles_on_profile_id"
+    t.index ["trip_id"], name: "index_trips_profiles_on_trip_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,3 +5,12 @@ commented trip index boat links
 boat links need to show proper boat names
 
 properly associate trips with a boat
+
+should trips and profiles be linked
+    do we need to show who has reserved seats? No
+    
+button on trip show to reserve seat
+    button must have amount of seats to reserve and cost?
+    
+Should skippers have to approve seats or can people automatically reserve them
+should there be a waitlist
