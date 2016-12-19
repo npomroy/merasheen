@@ -2,10 +2,16 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <% @stories.each do |story| %>
-                <div class="well row">
-                    <%= link_to story_path(id: story.id) do %>
-                        <h2><%= story.title %></h2>
-                    <% end %>
+                <div class="log-well row <%= cycle('white-bg', '') %>">
+                    <div class="col-sm-1">
+                        <i class="fa fa-thumbs-up"></i><%= story.user_id %>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= link_to story_path(id: story.id) do %>
+                            <h4><%= story.title %></h4>
+                        <% end %>
+                        <h6>Posted on: <%= story.created_at.to_formatted_s(:long_ordinal) %>, by: <%= @profiles.find(story.user_id).first_name %></h6>
+                    </div>
                 </div>
             <% end %>
         </div>

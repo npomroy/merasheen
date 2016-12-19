@@ -41,6 +41,7 @@ class StoriesController < ApplicationController
    
    def index
       @stories = Storie.all 
+      @profiles = Profile.all
    end
    
    private
