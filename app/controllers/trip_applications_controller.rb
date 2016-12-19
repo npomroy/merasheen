@@ -15,6 +15,11 @@ class TripApplicationsController < ApplicationController
       end
    end
    
+   def destroy
+      TripApplication.find(params[:id]).destroy
+      redirect_to trip_trip_applications_path
+   end
+   
    def index
       @applications = TripApplication.where("trip_id = ?", params[:trip_id])
    end
