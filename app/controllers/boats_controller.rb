@@ -14,10 +14,10 @@ class BoatsController < ApplicationController
         @boat = Boat.new( boat_params )
         if @boat.save
             flash[:success] = "Boat created"
-            redirect_to new_boat_path
+            redirect_to boat_path(id: @boat.id)
         else
             flash[:error] = "Creation failed"
-            redirect_to new_boat_path
+            render action: :new
         end
     end
     
