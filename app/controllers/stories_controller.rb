@@ -29,6 +29,8 @@ class StoriesController < ApplicationController
    
    def update
       @story = Storie.find(params[:id])
+      @story.date = Date.civil(params[:date][:year].to_i, params[:date][:month].to_i,
+                                 params[:date][:day].to_i)
       if @story.update_attributes(story_params)
           flash[:success] = "Story updated"
           redirect_to storie_path(id: params[:id])

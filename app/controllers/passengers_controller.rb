@@ -33,6 +33,14 @@ class PassengersController < ApplicationController
    
    def update
       @passenger = Passenger.find(params[:id])
+      @passenger.earliestdate = DateTime.civil(params[:start_date][:year].to_i, 
+                        params[:start_date][:month].to_i, params[:start_date][:day].to_i,
+                        params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,
+                        params[:start_date][:seconds].to_i)
+      @passenger.latestdate = DateTime.civil(params[:latest_date][:year].to_i, 
+                        params[:latest_date][:month].to_i, params[:latest_date][:day].to_i,
+                        params[:latest_date][:hour].to_i, params[:latest_date][:minute].to_i,
+                        params[:latest_date][:seconds].to_i)
       if @passenger.update_attributes(passenger_params)
           flash[:success] = "Lookin for Ride updated"
           redirect_to passengers_path

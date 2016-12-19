@@ -9,11 +9,11 @@
     </div>
     <div class="field form-group">
         <%= f.label :startdate %>
-        <%= f.datetime_field :startdate, class: "form-control" %>
+        <%= select_datetime DateTime.now, prefix: :startdate %>
     </div>
     <div class="field form-group">
         <%= f.label :enddate %>
-        <%= f.datetime_field :enddate, class: "form-control" %>
+        <%= select_datetime DateTime.tomorrow, prefix: :enddate %>
     </div>
     <div class="field form-group">
         <%= f.label :details %>
