@@ -4,6 +4,7 @@
             <div class="well">
                 <h1 class="text-center"><%= @log.title %></h1>
                 <i class="fa fa-thumbs-up"></i><%= @log.likes %>
+                <h6>Posted by: <%= @profile.first_name %>, on: <%= @log.created_at.to_formatted_s(:long_ordinal) %></h6>
                 <h5>Arrived: <%= @log.startdate.to_formatted_s(:long_ordinal) %></h5>
                 <h5>Departed: <%= @log.enddate.to_formatted_s(:long_ordinal) %></h5>
                 <br/>

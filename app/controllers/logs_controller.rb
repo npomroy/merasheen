@@ -22,6 +22,7 @@ class LogsController < ApplicationController
    
    def show
       @log = Log.find(params[:id]) 
+      @profile = Profile.find(@log.user_id)
    end
    
    def update
