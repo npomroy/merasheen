@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <% @logs.each do |mlog| %>
-                <div class="log-well row">
+                <div class="log-well row <%= cycle('white-bg', '') %>">
                     <div class="col-sm-1">
                         <i class="fa fa-thumbs-up"></i><%= mlog.likes %>
                     </div>
