@@ -22,6 +22,7 @@ class StoriesController < ApplicationController
    
    def show
       @story = Storie.find(params[:id]) 
+      @profile = Profile.find_by(user_id: @story.user_id)
    end
    
    def update

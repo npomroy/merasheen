@@ -3,8 +3,9 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="well">
                 <h1 class="text-center"><%= @story.title %></h1>
-                <h4><%= @story.location %></h4>
-                <h5><%= @story.date.to_s %></h5>
+                <h6>Posted by: <%= @profile.first_name %>, on: <%= @story.created_at.to_formatted_s(:long_ordinal) %></h6>
+                <h4>Occured: <%= @story.location %></h4>
+                <h5>on: <%= @story.date.to_formatted_s(:long_ordinal) %></h5>
                 <div class="well">
                     <p><%= @story.description %></p>
                 </div>
