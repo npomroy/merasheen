@@ -11,6 +11,8 @@ class StoriesController < ApplicationController
       @story = Storie.new(story_params)
       @story.user_id = current_user.id
       @story.likes = 0
+      @story.date = Date.civil(params[:date][:year].to_i, params[:date][:month].to_i,
+                                 params[:date][:day].to_i)
       if @story.save
           flash[:success] = "Story created"
           redirect_to stories_path
