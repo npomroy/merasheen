@@ -2,19 +2,17 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <% @logs.each do |mlog| %>
-                <div class="well row">
-                    <div class="col-sm-3">
-                        <%= link_to log_path(id: mlog.id) do %>
-                            <h3><%= mlog.title %></h3>
-                        <% end %>
-                        <%= @users.find(mlog.user_id).first_name %>
-                    </div>
+                <div class="log-well row">
                     <div class="col-sm-1">
                         <i class="fa fa-thumbs-up"></i><%= mlog.likes %>
                     </div>
-                    <div class="col-sm-8">
-                        <p><%= mlog.details %></p>
+                    <div class="col-sm-10">
+                        <%= link_to log_path(id: mlog.id) do %>
+                            <h4><%= mlog.title %></h4>
+                        <% end %>
+                        <h6>Posted on: <%= mlog.created_at.to_formatted_s(:long_ordinal) %>, by: <%= @users.find(mlog.user_id).first_name %></h6>
                     </div>
+                    
                 </div>
             <% end %>
         </div>
