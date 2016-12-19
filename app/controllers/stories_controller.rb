@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
    def create
       @story = Storie.new(story_params)
       @story.user_id = current_user.id
+      @story.likes = 0
       if @story.save
           flash[:success] = "Story created"
           redirect_to stories_path

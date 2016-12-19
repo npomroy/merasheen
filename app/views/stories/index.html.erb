@@ -4,7 +4,7 @@
             <% @stories.each do |story| %>
                 <div class="log-well row <%= cycle('white-bg', '') %>">
                     <div class="col-sm-1">
-                        <i class="fa fa-thumbs-up"></i><%= story.user_id %>
+                        <i class="fa fa-thumbs-up"></i><%= story.likes %>
                     </div>
                     <div class="col-sm-10">
                         <%= link_to story_path(id: story.id) do %>
