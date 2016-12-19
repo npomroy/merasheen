@@ -9,7 +9,7 @@
     </div>
     <div class="field form-group">
         <%= f.label "Latest Date:" %>
-        <%= f.datetime_field :latestdate, class: "form-control" %>
+        <%= select_datetime Date.today, prefix: :latest_date %>
     </div>
     <div class="field form-group">
         <%= f.label :details %>

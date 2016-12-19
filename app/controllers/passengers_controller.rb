@@ -14,6 +14,10 @@ class PassengersController < ApplicationController
                         params[:start_date][:month].to_i, params[:start_date][:day].to_i,
                         params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,
                         params[:start_date][:seconds].to_i)
+      @passenger.latestdate = DateTime.civil(params[:latest_date][:year].to_i, 
+                        params[:latest_date][:month].to_i, params[:latest_date][:day].to_i,
+                        params[:latest_date][:hour].to_i, params[:latest_date][:minute].to_i,
+                        params[:latest_date][:seconds].to_i)
       if @passenger.save
           flash[:success] = "Passenger created"
           redirect_to passengers_path
