@@ -16,6 +16,8 @@
         <%= f.select(:boat_id) do %>
             <%= options_from_collection_for_select(Boat.all, :id, :name) %>
         <% end %>
+        <%= link_to "View Boats", boats_path, class: "btn btn-primary" %>
+        <%= link_to "New Boat", new_boat_path, class: "btn btn-primary" %>
     </div>
     <div class='field form-group'>
         <%= f.label :skipper %>
