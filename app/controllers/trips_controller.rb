@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+    before_action :set_trip, only: [:show, :edit, :update, :destroy]
     before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
     before_action :only_owner, only: [:edit, :update, :destroy]
     
@@ -9,7 +10,6 @@ class TripsController < ApplicationController
     
     # GET /trips/:id
     def show
-       @trip = Trip.find(params[:id])
        @boat = Boat.find(@trip.boat_id)
     end
     
@@ -32,12 +32,10 @@ class TripsController < ApplicationController
     
     # GET /trips/:id/edit
     def edit
-       @trip = Trip.find(params[:id]) 
     end
     
     # PUT /trips/:id
     def update
-       @trip = Trip.find(params[:id])
        if @trip.update_attributes( trip_params )
            flash[:success] = "Trip updated"
            redirect_to trip_path(id: params[:id])
@@ -56,6 +54,10 @@ class TripsController < ApplicationController
     private
         def trip_params
            params.require(:trip).permit(:name, :depart_from, :depart_date_time, :boat_id, :skipper, :available_seats, :starting_price, :comments) 
+        end
+        
+        def set_trip
+           @trip = Trip.find(params[:id]) 
         end
         
         def only_with_names
