@@ -29,7 +29,11 @@
     </div>
     <div class='field form-group'>
         <%= f.label :starting_price %>
-        <%= f.number_field :starting_price, class: 'form-control' %>
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="number" class="form-control" id="starting_price" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+        </div>
     </div>
     <div class='field form-group'>
         <%= f.label :comments %>
