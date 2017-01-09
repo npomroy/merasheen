@@ -2,11 +2,13 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <% @applications.each do |application| %>
-                <div class="well">
-                    <%= application.seat_total.to_s %>
-                    <%= application.max_price_per_seat.to_s %>
-                    <%= application.details %>
-                </div>
+                <%= link_to trip_trip_application_path(id: application.id, trip_id: application.trip_id) do %>
+                    <div class="well">
+                        <%= application.seat_total.to_s %>
+                        <%= application.max_price_per_seat.to_s %>
+                        <%= application.details %>
+                    </div>
+                <% end %>
             <% end %>
         </div>
     </div>

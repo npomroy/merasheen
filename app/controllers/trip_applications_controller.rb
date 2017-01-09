@@ -31,6 +31,6 @@ class TripApplicationsController < ApplicationController
    
    private
         def application_params
-           params.require(:trip_application).permit(:seat_total, :max_price_per_seat, :trip_id) 
+           params.require(:trip_application).permit(:seat_total, :max_price_per_seat, :details, :user_id, :trip_id) 
         end
 end
