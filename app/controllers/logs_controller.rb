@@ -1,4 +1,5 @@
 class LogsController < ApplicationController
+    before_action :set_log, only: [:show, :edit, :update, :destroy]
    before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
    before_action :only_owner, only: [:edit, :update, :destroy]
     
@@ -7,7 +8,6 @@ class LogsController < ApplicationController
    end
    
    def edit
-      @log = Log.find(params[:id]) 
    end
    
    def create
@@ -32,12 +32,10 @@ class LogsController < ApplicationController
    end
    
    def show
-      @log = Log.find(params[:id]) 
       @profile = Profile.find_by(user_id: @log.user_id)
    end
    
    def update
-      @log = Log.find(params[:id])
       @log.startdate = DateTime.civil(params[:startdate][:year].to_i, 
                         params[:startdate][:month].to_i, params[:startdate][:day].to_i,
                         params[:startdate][:hour].to_i, params[:startdate][:minute].to_i,
@@ -56,7 +54,7 @@ class LogsController < ApplicationController
    end
    
    def destroy
-      Log.find([:id]).destroy
+      @log.destroy
       redirect_to logs_path
    end
    
@@ -68,6 +66,10 @@ class LogsController < ApplicationController
    private
         def log_params
             params.require(:log).permit(:title, :user_id, :link, :details, :startdate, :enddate, :likes)
+        end
+        
+        def set_log
+           @log = Log.find(params[:id]) 
         end
         
         def only_with_names
