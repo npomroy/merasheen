@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+   before_action :set_story, only: [:show, :edit, :update, :destroy]
    before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
    before_action :only_owner, only: [:edit, :update, :destroy]
     
@@ -7,7 +8,6 @@ class StoriesController < ApplicationController
    end
    
    def edit
-      @story = Storie.find(params[:id]) 
    end
    
    def create
@@ -26,12 +26,10 @@ class StoriesController < ApplicationController
    end
    
    def show
-      @story = Storie.find(params[:id]) 
       @profile = Profile.find_by(user_id: @story.user_id)
    end
    
    def update
-      @story = Storie.find(params[:id])
       @story.date = Date.civil(params[:date][:year].to_i, params[:date][:month].to_i,
                                  params[:date][:day].to_i)
       if @story.update_attributes(story_params)
@@ -44,7 +42,7 @@ class StoriesController < ApplicationController
    end
    
    def destroy
-      Storie.find(params[:id]).destroy
+      @story.destroy
       redirect_to stories_path
    end
    
@@ -56,6 +54,10 @@ class StoriesController < ApplicationController
    private
         def story_params
             params.require(:storie).permit(:user_id, :title, :location, :date, :description)
+        end
+        
+        def set_story
+           @story = Storie.find(params[:id])
         end
         
         def only_with_names
