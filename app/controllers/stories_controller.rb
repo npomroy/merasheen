@@ -1,4 +1,7 @@
 class StoriesController < ApplicationController
+   before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
+   before_action :only_owner, only: [:edit, :update, :destroy]
+    
    def new
       @story = Storie.new 
    end
@@ -53,5 +56,19 @@ class StoriesController < ApplicationController
    private
         def story_params
             params.require(:storie).permit(:user_id, :title, :location, :date, :description)
+        end
+        
+        def only_with_names
+            if current_user.profile
+                flash[:error] = "Profile must include first and last name"
+                redirect_to edit_user_profile_path(user_id: current_user.id) unless current_user.first_name && current_user.last_name
+            else
+                flash[:error] = "Must have profile"
+                redirect_to new_user_profile_path(user_id: current_user.id) unless current_user.profile
+            end
+        end
+        
+        def only_owner
+           redirect_to story_path(id: params[:id]) unless @story.user_id == current_user.id
         end
 end
