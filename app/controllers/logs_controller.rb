@@ -72,11 +72,15 @@ class LogsController < ApplicationController
         
         def only_with_names
             if current_user.profile
-                flash[:error] = "Profile must include first and last name"
-                redirect_to edit_user_profile_path(user_id: current_user.id) unless current_user.first_name && current_user.last_name
+                if current_user.profile.first_name && current_user.profile.last_name
+                    
+                else
+                    redirect_to edit_user_profile_path(user_id: current_user.id)
+                    flash[:error] = "Profile must include first and last name"
+                end
             else
+                redirect_to new_user_profile_path(user_id: current_user.id)
                 flash[:error] = "Must have profile"
-                redirect_to new_user_profile_path(user_id: current_user.id) unless current_user.profile
             end
         end
         
