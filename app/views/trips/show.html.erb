@@ -12,9 +12,12 @@
                 <h5><%= @trip.available_seats.to_s << " seats available" %></h5>
                 <p><%= "Comments: " << @trip.comments %></p>
             </div>
-            <%= link_to "Apply for seats", new_trip_trip_application_path(trip_id: @trip.id), class: "btn btn-primary" %>
-            <%= link_to "Review Applications", trip_trip_applications_path(trip_id: @trip.id), class: "btn btn-primary" %>
-            <%= link_to "Edit Trip", edit_trip_path(id: params[:id]), class: 'btn btn-primary' %>
+            <% if @trip.user_id == current_user.id %>
+                <%= link_to "Review Applications", trip_trip_applications_path(trip_id: @trip.id), class: "btn btn-primary" %>
+                <%= link_to "Edit Trip", edit_trip_path(id: params[:id]), class: 'btn btn-primary' %>
+            <% else %>
+                <%= link_to "Apply for seats", new_trip_trip_application_path(trip_id: @trip.id), class: "btn btn-primary" %>
+            <% end %>
         </div>
     </div>
 </div>
