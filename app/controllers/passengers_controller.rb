@@ -1,4 +1,5 @@
 class PassengersController < ApplicationController
+   before_action :set_passenger, only: [:show, :edit, :update, :destroy]
    before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
    before_action :only_owner, only: [:edit, :update, :destroy]
     
@@ -7,7 +8,6 @@ class PassengersController < ApplicationController
    end
    
    def edit
-      @passenger = Passenger.find(params[:id]) 
    end
    
    def create
@@ -31,11 +31,9 @@ class PassengersController < ApplicationController
    end
    
    def show
-      @passenger = Passenger.find(params[:id]) 
    end
    
    def update
-      @passenger = Passenger.find(params[:id])
       @passenger.earliestdate = DateTime.civil(params[:start_date][:year].to_i, 
                         params[:start_date][:month].to_i, params[:start_date][:day].to_i,
                         params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,
@@ -54,7 +52,7 @@ class PassengersController < ApplicationController
    end
    
    def destroy
-      Passenger.find(params[:id]).destroy
+      @passenger.destroy
       redirect_to passengers_path
    end
    
@@ -65,6 +63,10 @@ class PassengersController < ApplicationController
    private
         def passenger_params
            params.require(:passenger).permit(:title, :earliestdate, :latestdate, :details, :user_id) 
+        end
+        
+        def set_passenger
+           @passenger = Passenger.find(params[:id])
         end
         
         def only_with_names
