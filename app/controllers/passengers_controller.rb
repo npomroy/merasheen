@@ -1,4 +1,7 @@
 class PassengersController < ApplicationController
+   before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
+   before_action :only_owner, only: [:edit, :update, :destroy]
+    
    def new
       @passenger = Passenger.new 
    end
@@ -62,5 +65,19 @@ class PassengersController < ApplicationController
    private
         def passenger_params
            params.require(:passenger).permit(:title, :earliestdate, :latestdate, :details, :user_id) 
+        end
+        
+        def only_with_names
+            if current_user.profile
+                flash[:error] = "Profile must include first and last name"
+                redirect_to edit_user_profile_path(user_id: current_user.id) unless current_user.first_name && current_user.last_name
+            else
+                flash[:error] = "Must have profile"
+                redirect_to new_user_profile_path(user_id: current_user.id) unless current_user.profile
+            end
+        end
+        
+        def only_owner
+           redirect_to passenger_path(id: params[:id]) unless @passenger.user_id == current_user.id
         end
 end
