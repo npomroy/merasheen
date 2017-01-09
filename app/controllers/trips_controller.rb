@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
     before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
+    before_action :only_owner, only: [:edit, :update, :destroy]
     
     # GET /trips/new
     def new
@@ -65,5 +66,9 @@ class TripsController < ApplicationController
                 flash[:error] = "Must have profile"
                 redirect_to new_user_profile_path(user_id: current_user.id) unless current_user.profile
             end
+        end
+        
+        def only_owner
+           redirect_to trip_path(id: params[:id]) unless @trip.user_id == current_user.id
         end
 end
