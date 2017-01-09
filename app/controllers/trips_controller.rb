@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+    before_action :only_with_names, only: [:new, :create, :edit, :update, :destroy]
+    
     # GET /trips/new
     def new
        @trip = Trip.new
@@ -13,6 +15,7 @@ class TripsController < ApplicationController
     # POST /trips
     def create
        @trip = Trip.new( trip_params )
+       @trip.user_id = current_user.id
        @trip.depart_date_time = DateTime.civil(params[:depart_date_time][:year].to_i, 
                         params[:depart_date_time][:month].to_i, params[:depart_date_time][:day].to_i,
                         params[:depart_date_time][:hour].to_i, params[:depart_date_time][:minute].to_i,
@@ -52,5 +55,15 @@ class TripsController < ApplicationController
     private
         def trip_params
            params.require(:trip).permit(:name, :depart_from, :depart_date_time, :boat_id, :skipper, :available_seats, :starting_price, :comments) 
+        end
+        
+        def only_with_names
+            if current_user.profile
+                flash[:error] = "Profile must include first and last name"
+                redirect_to edit_user_profile_path(user_id: current_user.id) unless current_user.first_name && current_user.last_name
+            else
+                flash[:error] = "Must have profile"
+                redirect_to new_user_profile_path(user_id: current_user.id) unless current_user.profile
+            end
         end
 end
