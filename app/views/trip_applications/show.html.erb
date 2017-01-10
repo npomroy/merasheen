@@ -12,6 +12,16 @@
                     <p><%= @application.details %></p>
                 </div>
             </div>
+            <% if @application.accepted %>
+                <div class="bg-success">
+                    <h3><i class="fa fa-check"></i> Accepted!</h3>
+                </div>
+            <% end %>
+            <% if @application.declined %>
+                <div class="bg-danger">
+                    <h3><i class="fa fa-ban"></i> Declined</h3>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
