@@ -29,7 +29,7 @@
                             <h4><%= "Skipper: " << trip.skipper %></h4>
                         </div>
                         <div class="col-sm-5">
-                            <h5><%= trip.available_seats.to_s << " seats available at: $" << trip.starting_price.to_s << "0+ a seat" %></h5>
+                            <h5><%= trip.available_seats.to_s %><i class="fa fa-user"></i> ---- <i class="fa fa-dollar"></i><%= trip.starting_price.to_s %>0<sup>+</sup>/seat </h5>
                         </div>
                     </div>
                 </div>
