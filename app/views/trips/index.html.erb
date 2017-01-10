@@ -3,26 +3,34 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <% @trips.each do |trip| %>
-                <div class="well row">
-                    <div class='col-sm-4'>
-                        <%= link_to trip_path(id: trip.id) do %>
-                            <h2><%= trip.name %></h2>
-                        <% end %>
-                    </div>
-                    <div class='col-sm-4'>
-                        <h4><%= "Out of: " << trip.depart_from %></h4>
-                        <h4><%= "on: " << trip.depart_date_time.to_formatted_s(:long_ordinal) %></h4>
-                        <h3><%= "$" << trip.starting_price.to_s << "0+" %></h3>
-                    </div>
-                    <div class='col-sm-4'>
-                        <% @boats.each do |boat| %>
-                            <% if boat.id == trip.boat_id %>
-                                <h4>Boat: <%= boat.name %></h4>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <%= link_to trip_path(id: trip.id) do %>
+                                <h4><%= trip.name %></h4>
                             <% end %>
-                        <% end %>
-                        <h4><%= "Skipper: " << trip.skipper %></h4>
-                        <h5><%= trip.available_seats.to_s << " seats available" %></h5>
-                        <p><%= "Comments: " << trip.comments %></p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6><%= "Leaving: " << trip.depart_from << " on: " << trip.depart_date_time.to_formatted_s(:long_ordinal) %></h6>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5><%=  %></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <% @boats.each do |boat| %>
+                                <% if boat.id == trip.boat_id %>
+                                    <h4>Boat: <%= boat.name %></h4>
+                                <% end %>
+                            <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><%= "Skipper: " << trip.skipper %></h4>
+                        </div>
+                        <div class="col-sm-5">
+                            <h5><%= trip.available_seats.to_s << " seats available at: $" << trip.starting_price.to_s << "0+ a seat" %></h5>
+                        </div>
                     </div>
                 </div>
             <% end %>
