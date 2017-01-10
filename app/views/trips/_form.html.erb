@@ -3,13 +3,18 @@
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control' %>
     </div>
-    <div class='field form-group'>
-        <%= f.label :depart_from %>
-        <%= f.text_field :depart_from, class: 'form-control' %>
-    </div>
-    <div class='field form-group'>
-        <%= f.label :depart_date_time %>
-        <%= select_datetime DateTime.tomorrow, prefix: :depart_date_time %>
+    <div class='field form-group row'>
+        <div class="col-sm-6">
+            <%= f.label :depart_from %>
+            <%= f.text_field :depart_from, class: 'form-control' %>
+        </div>
+        <div class="col-sm-6">
+            <%= f.label "on: " %>
+            <br/>
+            <%= select_datetime DateTime.tomorrow, prefix: :depart_date_time %>
+        </div>
+        
+        
     </div>
     <div class='field form-group'>
         <%= f.label :boat %>
@@ -19,13 +24,19 @@
         <%= link_to "View Boats", boats_path, class: "btn btn-primary" %>
         <%= link_to "New Boat", new_boat_path, class: "btn btn-primary" %>
     </div>
-    <div class='field form-group'>
-        <%= f.label :skipper %>
-        <%= f.text_field :skipper, class: 'form-control' %>
+    <div class='field form-group row'>
+        <div class="col-sm-8">
+            <%= f.label :skipper %>
+            <%= f.text_field :skipper, class: 'form-control' %>
+        </div>
+        <div class="col-sm-4">
+            <%= f.label :available_seats %>
+            <%= f.number_field :available_seats, class: 'form-control' %>
+        </div>
+        
     </div>
     <div class='field form-group'>
-        <%= f.label :available_seats %>
-        <%= f.number_field :available_seats, class: 'form-control' %>
+        
     </div>
     <div class='field form-group'>
         <%= f.label :starting_price %>
