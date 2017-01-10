@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109023638) do
+ActiveRecord::Schema.define(version: 20170110220355) do
 
   create_table "boats", force: :cascade do |t|
     t.string   "name"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 20170109023638) do
     t.integer "max_price_per_seat"
     t.text    "details"
     t.integer "user_id"
+    t.boolean "accepted",           default: false
+    t.boolean "declined",           default: false
   end
 
   create_table "trips", force: :cascade do |t|
