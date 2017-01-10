@@ -4,9 +4,17 @@
         <div class="col-md-8 col-md-offset-2">
             <% @passengers.each do |passenger| %>
                 <div class="well row">
-                    <%= link_to passenger_path(id: passenger.id) do %>
-                        <%= passenger.title %>
-                    <% end %>
+                    <div class="col-sm-6">
+                        <%= link_to passenger_path(id: passenger.id) do %>
+                            <%= passenger.title %>
+                        <% end %>
+                    </div>
+                    <div class="col-sm-6">
+                        Between:
+                        <%= passenger.earliestdate.to_formatted_s(:short) %>
+                        and
+                        <%= passenger.latestdate.to_formatted_s(:short) %>
+                    </div>
                 </div>
             <% end %>
         </div>
