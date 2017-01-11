@@ -1,5 +1,6 @@
 class TripApplicationsController < ApplicationController
    before_action :set_application, only: [:show, :destroy, :accept, :deny]
+   before_action :only_owner, only: [:show, :destroy, :accept, :deny]
    
    def new
        @application = TripApplication.new
@@ -28,7 +29,7 @@ class TripApplicationsController < ApplicationController
    end
    
    def index
-      @applications = TripApplication.where("trip_id = ?", params[:trip_id])
+      @applications = TripApplication.where("owner_id = ?", current_user.id)
    end
    
    def accept
@@ -62,6 +63,10 @@ class TripApplicationsController < ApplicationController
             else
                @application = TripApplication.find(params[:trip_application_id])
             end
+         end
+         
+         def only_owner
+            redirect_to trip_trip_applications_path(trip_id: @application.trip_id) unless @application.owner_id == current_user.id
          end
          
          def application_params
