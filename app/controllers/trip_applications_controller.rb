@@ -1,4 +1,6 @@
 class TripApplicationsController < ApplicationController
+   before_action :set_application, only: [:show, :destroy, :accept, :deny]
+   
    def new
        @application = TripApplication.new
    end
@@ -17,12 +19,11 @@ class TripApplicationsController < ApplicationController
    end
    
    def show
-      @application = TripApplication.find(params[:id]) 
       @owner = User.find(Trip.find(@application.trip_id).user_id).profile
    end
    
    def destroy
-      TripApplication.find(params[:id]).destroy
+      @application.destroy
       redirect_to trip_trip_applications_path
    end
    
@@ -30,8 +31,26 @@ class TripApplicationsController < ApplicationController
       @applications = TripApplication.where("trip_id = ?", params[:trip_id])
    end
    
+   def accept
+      if !(@application.accepted || @application.declined)
+         @application.accepted = true
+         redirect_to trip_trip_applications_path(trip_id: @application.trip_id)
+      end
+   end 
+   
+   def deny
+      if !(@application.accepted || @application.declined)
+         @application.declined = true
+         redirect_to trip_trip_applications_path(trip_id: @application.trip_id)
+      end
+   end 
+   
    private
-        def application_params
+         def set_application
+            @application = TripApplication.find(params[:id]) 
+         end
+         
+         def application_params
            params.require(:trip_application).permit(:seat_total, :max_price_per_seat, :details, :user_id, :trip_id) 
-        end
+         end
 end
