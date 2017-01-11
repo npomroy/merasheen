@@ -20,18 +20,20 @@
             <br/>
             <h2 class="text-center">Pending My Approval</h2>
             <% @tripapplications.each do |application| %>
-                <%= link_to trip_trip_application_path(id: application.id, trip_id: application.trip_id) do %>
-                    <div class="well row">
-                        <div class="col-sm-2">
-                            <h3><i class="fa fa-user-times"></i> <%= application.seat_total.to_s %></h3>
+                <% if !application.accepted && !application.declined %>
+                    <%= link_to trip_trip_application_path(id: application.id, trip_id: application.trip_id) do %>
+                        <div class="well row">
+                            <div class="col-sm-2">
+                                <h3><i class="fa fa-user-times"></i> <%= application.seat_total.to_s %></h3>
+                            </div>
+                            <div class="col-sm-2">
+                                <h3><i class="fa fa-dollar"></i> <%= application.max_price_per_seat.to_s %> <small>each</small></h3>
+                            </div>
+                            <div class="col-sm-8">
+                                <p><%= application.details %></p>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
-                            <h3><i class="fa fa-dollar"></i> <%= application.max_price_per_seat.to_s %> <small>each</small></h3>
-                        </div>
-                        <div class="col-sm-8">
-                            <p><%= application.details %></p>
-                        </div>
-                    </div>
+                    <% end %>
                 <% end %>
             <% end %>
         </div>
