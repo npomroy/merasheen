@@ -17,7 +17,7 @@
                         <div class="col-sm-2">
                             <% if application.accepted %>
                                 <h3 class="bg-success">Accepted</h3>
-                                <%= link_to trip_trip_application_path(trip_id: application.trip_id, id: application.id), method: :delete do %>
+                                <%= link_to trip_trip_application_path(trip_id: application.trip_id, id: application.id), method: :delete, class: "btn btn-danger" do %>
                                     <i class="fa fa-trash"></i>
                                 <% end %>
                             <% elsif application.declined %>

@@ -1,6 +1,7 @@
 class TripApplicationsController < ApplicationController
    before_action :set_application, only: [:show, :destroy, :accept, :deny]
-   before_action :only_owner, only: [:show, :accept, :deny]
+   before_action :only_owner, only: [:accept, :deny]
+   before_action :only_owner_or_poster, only: [:show]
    
    def new
        @application = TripApplication.new
@@ -40,7 +41,7 @@ class TripApplicationsController < ApplicationController
          else
              flash[:error] = "Accept failed"
          end
-         redirect_to trip_trip_applications_path(trip_id: @application.trip_id)
+         redirect_to applications_path
       end
    end 
    
@@ -52,7 +53,7 @@ class TripApplicationsController < ApplicationController
          else
              flash[:error] = "Deny failed"
          end
-         redirect_to trip_trip_applications_path(trip_id: @application.trip_id)
+         redirect_to applications_path
       end
    end 
    
@@ -66,7 +67,11 @@ class TripApplicationsController < ApplicationController
          end
          
          def only_owner
-            redirect_to trip_trip_applications_path(trip_id: @application.trip_id) unless @application.owner_id == current_user.id
+            redirect_to applications_path unless @application.owner_id == current_user.id
+         end
+         
+         def only_owner_or_poster
+            redirect_to applications_path unless (@application.owner_id == current_user.id || @application.user_id == current_user.id)
          end
          
          def application_params
