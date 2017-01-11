@@ -34,6 +34,11 @@ class TripApplicationsController < ApplicationController
    def accept
       if !(@application.accepted || @application.declined)
          @application.accepted = true
+         if @application.save
+             flash[:success] = "Application accepted"
+         else
+             flash[:error] = "Accept failed"
+         end
          redirect_to trip_trip_applications_path(trip_id: @application.trip_id)
       end
    end 
@@ -41,6 +46,11 @@ class TripApplicationsController < ApplicationController
    def deny
       if !(@application.accepted || @application.declined)
          @application.declined = true
+         if @application.save
+             flash[:success] = "Application denied"
+         else
+             flash[:error] = "Deny failed"
+         end
          redirect_to trip_trip_applications_path(trip_id: @application.trip_id)
       end
    end 
