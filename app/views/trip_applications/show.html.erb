@@ -23,9 +23,9 @@
                 </div>
             <% end %>
             
-            <% if @owner.user_id == current_user.id && !@application.accepted && !@application.denied %>
-                <%= link_to "Accept", trip_trip_application_accept_path(trip_id: @application.trip_id, trip_application_id: @application.id) %>
-                <%= link_to "Deny", trip_trip_application_deny_path(trip_id: @application.trip_id, trip_application_id: @application.id) %>
+            <% if @owner.user_id == current_user.id && !@application.accepted && !@application.declined %>
+                <%= link_to "Accept", trip_trip_application_accept_path(trip_id: @application.trip_id, trip_application_id: @application.id), class: "btn btn-success" %>
+                <%= link_to "Deny", trip_trip_application_deny_path(trip_id: @application.trip_id, trip_application_id: @application.id), class: "btn btn-danger pull-right" %>
             <% end %>
         </div>
     </div>
