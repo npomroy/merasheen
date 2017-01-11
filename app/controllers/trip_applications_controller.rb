@@ -47,7 +47,11 @@ class TripApplicationsController < ApplicationController
    
    private
          def set_application
-            @application = TripApplication.find(params[:id]) 
+            if params[:id]
+               @application = TripApplication.find(params[:id]) 
+            else
+               @application = TripApplication.find(params[:trip_application_id])
+            end
          end
          
          def application_params

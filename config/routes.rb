@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     resource :profile
   end
   resources :trips do
-    resources :trip_applications
+    resources :trip_applications do
+      get 'accept', to: 'trip_applications#accept'
+      get 'deny', to: 'trip_applications#deny'
+    end
   end
   resources :boats, :passengers, :logs, :stories
 end
