@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'about', to: 'pages#about'
   get 'all_aboard', to: 'pages#all_aboard'
+  get 'applications', to: 'all_aboard#applications'
   resources :users do
     resource :profile
   end
