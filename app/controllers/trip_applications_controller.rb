@@ -10,6 +10,7 @@ class TripApplicationsController < ApplicationController
    def create
       @application = TripApplication.new( application_params )
       @application.trip_id = params[:trip_id]
+      @application.owner_id = Trip.find(@application.trip_id).user_id
       @application.user_id = current_user.id
       if @application.save
           flash[:success] = "Application submitted"
