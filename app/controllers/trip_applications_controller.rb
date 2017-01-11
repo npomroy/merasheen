@@ -1,6 +1,6 @@
 class TripApplicationsController < ApplicationController
    before_action :set_application, only: [:show, :destroy, :accept, :deny]
-   before_action :only_owner, only: [:show, :destroy, :accept, :deny]
+   before_action :only_owner, only: [:show, :accept, :deny]
    
    def new
        @application = TripApplication.new
@@ -25,7 +25,7 @@ class TripApplicationsController < ApplicationController
    
    def destroy
       @application.destroy
-      redirect_to trip_trip_applications_path
+      redirect_to applications_path
    end
    
    def index

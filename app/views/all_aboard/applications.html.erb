@@ -11,8 +11,18 @@
                         <div class="col-sm-2">
                             <h3><i class="fa fa-dollar"></i> <%= application.max_price_per_seat.to_s %> <small>each</small></h3>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
                             <p><%= application.details %></p>
+                        </div>
+                        <div class="col-sm-2">
+                            <% if application.accepted %>
+                                <h3 class="bg-success">Accepted</h3>
+                                <%= link_to trip_trip_application_path(trip_id: application.trip_id, id: application.id), method: :delete do %>
+                                    <i class="fa fa-trash"></i>
+                                <% end %>
+                            <% elsif application.declined %>
+                            
+                            <% end %>
                         </div>
                     </div>
                 <% end %>
