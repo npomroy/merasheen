@@ -18,6 +18,7 @@ class TripApplicationsController < ApplicationController
    
    def show
       @application = TripApplication.find(params[:id]) 
+      @owner = User.find(Trip.find(@application.trip_id).user_id).profile
    end
    
    def destroy
